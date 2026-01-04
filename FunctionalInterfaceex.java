@@ -27,9 +27,6 @@ public static void main (String\[] args) throws java.lang.Exception
 &nbsp;	}
 
 
-
-
-
 ###### **Explanation:**
 
 
@@ -58,3 +55,28 @@ function.apply(100) calculates 100 \* 100, which equals 10,000.
 
 consumer.accept(10000) executes System.out.println(10000), printing the final result.
 
+
+
+** BiPredicate, BiFunction, BiConsumer **
+If we want to give 2 inputs to the above interfaces as input, then we have these:
+
+BiPredicate<Integer, Integer> biPredicate = (x, y) -> (x + y) % 2 == 0;
+System.out.println(biPredicate.test(5, 5));                                           //true
+
+BiConsumer<Integer, String> biConsumer = (x, y) -> {
+    System.out.println(x);
+    System.out.println(y);
+}
+biConsumer.accept(5, "abcd");
+
+BiFunction<Integer, Integer> biFunction = (x, y) -> x + y;
+System.out.println(biFunction.apply(2, 8));
+
+
+**Unary Operator extends Function**
+Function<Integer, Integer> a = x -> 2 * x; //(Here as we know that both the types of inputs and outputs are same,we can write even like this)
+UnaryOperator<Integer> b = x ->  2 * x;
+
+**Binary Operator extends BiFunction**
+BiFunction<Integer, Integer> biFunction = (x, y) -> x + y;   //or
+BinaryOperator<Integer> bb = (x, y) -> x + y;
